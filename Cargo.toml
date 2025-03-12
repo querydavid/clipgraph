@@ -1,0 +1,8 @@
+[package]
+name = "asciigraph"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rasciigraph = "0.2"
+clipboard = "0.5.0"
