@@ -1,5 +1,5 @@
 # clipgraph
-A simple CLI to parse and graph numerical data pasted to the clipboard
+A simple CLI to parse, graph, and analyze numerical data pasted to the clipboard
 
 Uses the [rasciigraph](https://github.com/orhanbalci/rasciigraph) and [histo](https://docs.rs/histo/latest/histo/index.html) crates.
 
@@ -15,9 +15,11 @@ Case-sensitive options:
 - "p" Prints the numerical data that could be parsed from the clipboard
 - "l" ASCII line graph of the values (in the order presented)
 - "h" 10-bucket histogram with exploratory stats (currently supports only positive numbers, and rounds to integers)
+- "r" currently a limited OLS for two columns of data with tab delimitation. Y is left, X is right.
 
 To-dos:
 - Work with other delimiters
 - add Clap, the CLI is currently very minimal
 - error handling
 - throw in some other plotting libraries
+- build out the linear regression capabilities.
