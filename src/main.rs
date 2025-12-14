@@ -7,6 +7,7 @@ use std::io::Error;
 use std::num::ParseFloatError;
 
 fn main() -> Result<(), ParseFloatError> {
+    //TODO! this is a messy error, fix later
     let mut craw: ClipboardContext = ClipboardProvider::new().unwrap();
     let raw = craw.get_contents().unwrap();
     craw.set_contents(raw.clone()).unwrap(); //this is to "reset" clipboard contents
@@ -24,12 +25,14 @@ fn main() -> Result<(), ParseFloatError> {
     }
 
     let mut mode = std::env::args();
-    match mode.nth(1).unwrap().as_str() {
+    match mode.nth(1).as_deref() {
         //I sense this is a very messy unwrap
-        "p" => printdata(weights),
-        "l" => linedata(weights),
-        "h" => histodata(weights),
-        "r" => simplereg(weights),
+        //yay, I fixed the originally messy unwrap
+        //not sure whether this is idiomatic, feels like cheating
+        Some("p") => printdata(weights),
+        Some("l") => linedata(weights),
+        Some("h") => histodata(weights),
+        Some("r") => simplereg(weights),
         _ => println!(
             "Usage: 'p' to print data,
             'l' for line,
